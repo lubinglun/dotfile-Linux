@@ -1,0 +1,81 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME="af-magic"
+ZSH_THEME=""
+
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(extract zsh-autosuggestions fast-syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+export PATH=$HOME/.local/bin:$PATH 
+
+eval "$(starship init zsh)"
+eval "$(mise activate zsh)"
+eval "$(atuin init zsh)"
+
+
+# ===================================================================
+# FZF 默认选项
+export FZF_DEFAULT_OPTS="
+  --height 50%
+  --layout reverse
+  --border rounded
+  --info inline
+  --prompt '🔍 '
+  --pointer '▶'
+  --marker '✓'
+  --color 'border:#89b4fa,prompt:#cba6f7,pointer:#f38ba8,marker:#a6e3a1'
+"
+
+# Zoxide configuration ==============================================
+
+export _ZO_DATA_DIR="$HOME/.local/share"   # Zoxide 数据目录
+export _ZO_MAXAGE=10000   # 最大记录数
+export _ZO_RESOLVE_SYMLINKS=1   # 解析符号链接
+
+# Zoxide + FZF 集成选项
+export _ZO_FZF_OPTS="
+  --height 60%
+  --layout reverse
+  --border rounded
+  --info inline
+  --prompt '📁 : '
+  --pointer '▶'
+  --marker '✓'
+  --color 'border:#89b4fa,prompt:#cba6f7,pointer:#f38ba8,marker:#a6e3a1'
+  --preview 'eza -la --icons --color=always --group-directories-first {2..} 2>/dev/null || ls -lah --color=always {2..} 2>/dev/null'
+  --preview-window right:50%:wrap:border-left
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-u:preview-page-up'
+  --bind 'ctrl-d:preview-page-down'
+  --bind 'ctrl-y:execute-silent(echo {2..} | pbcopy)+abort'
+"
+
+eval "$(zoxide init zsh)"
+# end Zoxide configuration ==========================================
+
+alias ls='eza --icons'
+alias l='eza -lah --icons --git'
+alias ll='eza -lh --icons --git --color-scale'
+alias la='eza -lah --icons --git --color=always --group-directories-first'
+alias cat=bat
+alias vim='nvim'
+alias clip='xclip -selection clipboard'
+
+# yazi configuration ===========================================================
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+# end yazi configuration =======================================================
+
