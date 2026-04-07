@@ -68,7 +68,12 @@ alias la='eza -lah --icons --git --color=always --group-directories-first'
 alias cat=bat
 alias vim='nvim'
 alias clip='xclip -selection clipboard'
-
+alias cp='xcp'           # 替代 cp，支持进度条
+alias top='btop'         # 替代 top/htop
+alias ps='procs'         # 替代 ps
+alias du='gdu'           # 替代 du
+alias tree='broot'       # 替代 tree
+alias lg='lazygit'       # lazygit 快捷键
 # yazi configuration ===========================================================
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
