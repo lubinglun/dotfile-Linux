@@ -1,7 +1,6 @@
 [tools]
 "cargo:atuin" = "latest"
 "cargo:bat" = "latest"
-"cargo:broot" = "latest"
 "cargo:eza" = "latest"
 "cargo:fd-find" = "latest"
 "cargo:procs" = "latest"
@@ -11,6 +10,7 @@
 "cargo:xcp" = "latest"
 "cargo:zellij" = "latest"
 "cargo:zoxide" = "latest"
+delta = "latest"
 go = "latest"
 "go:github.com/jesseduffield/lazygit" = "latest"
 "go:github.com/junegunn/fzf" = "latest"
