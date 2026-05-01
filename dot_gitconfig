@@ -1,0 +1,54 @@
+[http]
+	postBuffer = 524288000
+	lowSpeedLimit = 0
+	lowSpeedTime = 999999
+[user]
+	name = lubinglun
+	email = binglunlu1997@163.com
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    # 基础
+    navigate = true          # n/N 在文件间跳转
+    side-by-side = true      # 左右并排显示
+    line-numbers = true      # 显示行号
+    
+    # 主题（可选：GitHub、Dracula、gruvbox-dark、Nord、OneHalfDark）
+    syntax-theme = Dracula
+    
+    # 样式
+    file-style = bold yellow  # 文件名颜色
+    file-decoration-style = yellow ul  # 文件名下划线
+    hunk-header-style = file line-number syntax
+    hunk-header-decoration-style = cyan box
+    
+    # 行号样式
+    line-numbers-left-format = "{nm:>4}┊"
+    line-numbers-right-format = "{np:>4}│"
+    line-numbers-left-style = cyan
+    line-numbers-right-style = cyan
+    line-numbers-minus-style = red
+    line-numbers-plus-style = green
+    
+    # diff 颜色
+    minus-style = syntax "#3f0001"
+    minus-emph-style = syntax "#901011"
+    plus-style = syntax "#003800"
+    plus-emph-style = syntax "#007800"
+    
+    # merge conflict 高亮
+    merge-conflict-begin-symbol = ⚡
+    merge-conflict-end-symbol = ⚡
+    merge-conflict-iff-symbol = ╠
+    merge-conflict-ours-diff-header-style = "bold yellow"
+    merge-conflict-theirs-diff-header-style = "bold magenta"
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
